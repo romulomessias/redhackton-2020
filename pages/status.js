@@ -233,7 +233,7 @@ export default function Home() {
             <Arrow />
           </ButtonIcon>
 
-          <ButtonIcon>
+          <ButtonIcon onClick={handleUpdateButton}>
             <ButtonIconText>Atualizar</ButtonIconText>
             <Refresh />
           </ButtonIcon>
