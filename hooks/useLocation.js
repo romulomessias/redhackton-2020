@@ -2,19 +2,18 @@ import { useEffect, useState } from "react";
 
 export const useLocation = () => {
   const [coords, setCoords] = useState({
-    lat: 0,
-    lng: 0,
+    lat: -23.5942,
+    lng: -46.6836,
   });
 
   const [status, setStatus] = useState("idle");
 
   function handleSuccess(position) {
     const { latitude, longitude } = position.coords;
-    console.log({ position });
 
     setCoords({
-      lat: latitude,
-      lng: longitude,
+      lat: -23.5942,
+      lng: -46.6836,
     });
 
     setStatus("allowed");
