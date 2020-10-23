@@ -18,7 +18,7 @@ export default function Finish() {
   return (
     <Container>
       <Main>
-        <Title>Obrigado oela contribuição!</Title>
+        <Title>Obrigado pela contribuição!</Title>
       </Main>
     </Container>
   )
