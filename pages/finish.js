@@ -1,4 +1,4 @@
-import { Container } from "../../styles/pages/Index.styled";
+import { Container } from "../styles/pages/Index.styled";
 import styled from "styled-components";
 
 // components
