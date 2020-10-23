@@ -1,9 +1,12 @@
 import Head from "next/head";
+import { QueryCache, ReactQueryCacheProvider } from 'react-query'
 
 import { ThemeProvider } from "styled-components";
 import { StoreProvider } from "../stores/store";
 import { GlobalStyle } from "../styles/globals";
 import { theme } from "../styles/theme";
+
+const queryCache = new QueryCache()
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -37,9 +40,11 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <StoreProvider>
-          <Component {...pageProps} />
-        </StoreProvider>
+        <ReactQueryCacheProvider queryCache={queryCache}>
+          <StoreProvider>
+            <Component {...pageProps} />
+          </StoreProvider>
+        </ReactQueryCacheProvider>
       </ThemeProvider>
     </>
   );
