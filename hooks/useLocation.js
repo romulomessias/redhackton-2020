@@ -11,6 +11,11 @@ export const useLocation = () => {
   function handleSuccess(position) {
     const { latitude, longitude } = position.coords;
 
+    // setCoords({
+    //   lat: latitude,
+    //   lng: longitude,
+    // });
+    
     setCoords({
       lat: -23.5942,
       lng: -46.6836,
