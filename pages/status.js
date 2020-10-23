@@ -203,6 +203,10 @@ export default function Home() {
     });
   }, []);
 
+  const handlefeedback = () => {
+    router.push("/finish");
+  };
+
   const handleBackButton = () => {
     router.push("/");
   };
@@ -220,7 +224,7 @@ export default function Home() {
       created_at: "2020-10-23T21:55:54.000Z",
       updated_at: null,
     });
-  }
+  };
 
   return (
     <Fragment>
@@ -267,7 +271,7 @@ export default function Home() {
           As informações acima estão corretas?
         </ActionButtonLabel>
         <ZoneAction>
-          <ActionButton>SIM</ActionButton>
+          <ActionButton onClick={handlefeedback}>Sim</ActionButton>
           <ActionButton>Não</ActionButton>
         </ZoneAction>
       </StatusContainer>
