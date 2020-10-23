@@ -55,6 +55,13 @@ export const getZones = async () => {
   ];
 };
 
+export const getZonesStatus = async (number) => {
+  return fetch(
+    "http://ec2-18-234-191-73.compute-1.amazonaws.com/zone/status?number=" +
+      number
+  ).then((res) => res.json());
+};
+
 /**
  * const { isLoading, error, data } = useQuery('zonesData', getZones)
  * if (isLoading) return 'Loading'

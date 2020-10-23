@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import Room from "../public/icons/room.svg";
 
 const useLocalName = (coords) => {
   const [details, setDetails] = useState("");
@@ -17,18 +18,29 @@ const useLocalName = (coords) => {
 };
 
 const Container = styled.div`
-  height: 48px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 8px;
+  padding: 16px;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 24px;
+`;
+
+const Text = styled.div`
+  margin-left: 8px;
 `;
 
 const CurrentLocationName = ({ coords }) => {
   const { city = "", state = "" } = useLocalName(coords);
   return (
     <Container>
-      {city} / {state}
+      <Room />
+      <Text>
+        {city} / {state}
+      </Text>
     </Container>
   );
 };
