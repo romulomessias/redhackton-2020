@@ -68,5 +68,3 @@ export const useMap = (coords = uluru, marks = []) => {
     updateMarks,
   };
 };
-
-export default initMap;
