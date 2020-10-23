@@ -7,9 +7,42 @@ import CurrentLocationName from "../components/CurrentLocationName";
 import Map from "../components/Map";
 import styled from "styled-components";
 import { getZones } from "../services/zones";
+import Button from "../components/Button";
 
-const H2 = styled.h2`
-  padding: 16px;
+const Title = styled.h2`
+  height: 110px;
+  margin: 0;
+  margin-bottom: 16px;
+  width: 378.89px;
+  font-family: Avenir;
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 55px;
+  text-align: center;
+`;
+
+const ZoneButton = styled(Button)`
+  box-sizing: border-box;
+  height: 80px;
+  width: 100%;
+  border: 0px;
+  border-radius: 4px;
+  // background-color: #e9e9e9;
+
+  color: #fff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: center;
+  background-color: #0006ff;
+  text-transform: uppercase;
+`;
+
+const ButtonArea = styled.div`
+  // padding: 16px;
 `;
 
 export default function Home() {
@@ -29,9 +62,12 @@ export default function Home() {
       </Head>
       <Container>
         <CurrentLocationName coords={coords} />
-        <H2>Zonas Eleitorais perdo de você</H2>
+        <Title>Zonas Eleitorais perdo de você</Title>
         <Map coords={coords} places={zones} />
-        <button>Não voto nessa região</button>
+
+        <ButtonArea>
+          <ZoneButton>Não voto nessa região</ZoneButton>
+        </ButtonArea>
       </Container>
     </Fragment>
   );
