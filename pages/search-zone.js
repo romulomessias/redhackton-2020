@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Container } from "../styles/pages/Index.styled";
 import { useDispatch } from '../stores/store'
@@ -21,12 +21,21 @@ const StyledButton = styled(Button)`
   bottom: 40px;
 `
 
+const StyledCenterArea = styled.div`
+  margin-top: 170px;
+`
+
 export default function SearchZone() {
   const [value, setValue] = useState('')
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    localStorage.removeItem('zone')
+  }, [])
+
   const searchZone = () => {
     if (value) {
+      localStorage.setItem('zone', value)
       dispatch({ type: 'SET_ZONE', zone: value })
     }
   }
@@ -34,8 +43,10 @@ export default function SearchZone() {
   return (
     <Container>
       <Main>
-        <Title>Onde é sua zona eleitoral?</Title>
-        <Input label="Nº da Zona" onChange={setValue} value={value} />
+        <StyledCenterArea>
+          <Title>Onde é sua zona eleitoral?</Title>
+          <Input label="Nº da Zona" onChange={setValue} value={value} />
+        </StyledCenterArea>
         <StyledButton onClick={searchZone}>Buscar Zona Eleitoral</StyledButton>
       </Main>
     </Container>

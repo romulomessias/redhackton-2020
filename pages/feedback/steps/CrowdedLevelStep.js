@@ -1,55 +1,60 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 // components
 import SquareButton from '../../../components/SquareButton'
+import Title from '../../../components/Title'
+import FormGrid from '../../../components/FormGrid'
 
-const FormGrid = styled.div`
-  align-items: start;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-row-gap: 5px;
-  grid-column-gap: 6.14%;
-  margin: 0;
-  padding: 0;
+// icons
+import People from "../../../public/icons/people.svg";
+import Person from "../../../public/icons/person.svg";
+import Groups from "../../../public/icons/groups.svg";
 
-  & div:nth-of-type(1) {
-    grid-column: 2 / span 2;
-  }
-
-  & div:nth-of-type(2) {
-    grid-column: 4 / span 2;
-  }
-
-  & div:nth-of-type(3) {
-    grid-column: 1 / span 2;
-  }
-
-  & div:nth-of-type(4) {
-    opacity: 0;
-    cursor: none; 
-    grid-column: 3 / span 2;
-  }
-
-  & div:nth-of-type(5) {
-    grid-column: 5 / span 2;
-  }
-
-  /* display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, minmax(200px, 1fr));
-  grid-gap: 10px; */
+const SquareTitle = styled.h2`
+  text-align: center;
 `
 
-export default function CrowdedLevelStep({ setStep }) {
-  // slug 0
-  // value: 1 baixo, 2 medio, 3 alto, 4 mto alto
+export default function CrowdedLevelStep({ setStep, onSelect }) {
+  const measure = [
+    {
+      label: 'Baixo',
+      slug: 0,
+      description: 'Zona vazio',
+      level: 1
+    },
+    {
+      label: 'Medio',
+      slug: 0,
+      description: 'Zona media',
+      level: 2
+    },
+    {
+      label: 'None',
+      slug: 0,
+      description: 'Zona None',
+      level: 1
+    },
+    {
+      label: 'Alto',
+      slug: 0,
+      description: 'Zona cheia',
+      level: 3
+    }
+  ]
+
   return (
-    <FormGrid>
-      <SquareButton>Baixo</SquareButton>
-      <SquareButton>Medio</SquareButton>
-      <SquareButton>None</SquareButton>
-      <SquareButton>Alto</SquareButton>
-    </FormGrid>
+    <>
+      <Title>Como está o nível de aglomeração agora?</Title>
+      <FormGrid>
+        {measure.map((feedback, index) => (
+          <SquareButton onClick={() => onSelect(feedback)} key={index}>
+            {feedback.level === 1 && <Person width="45px" height="45px" />}
+            {feedback.level === 2 && <People width="45px" height="45px" />}
+            {feedback.level === 3 && <Groups width="45px" height="45px" />}
+            <SquareTitle>{feedback.label}</SquareTitle>
+          </SquareButton>
+        ))}
+      </FormGrid>
+    </>
   );
 }
