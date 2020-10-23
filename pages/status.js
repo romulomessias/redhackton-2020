@@ -155,9 +155,8 @@ export default function Home() {
   const [status, setStatus] = useState();
 
   useEffect(() => {
-    console.log("hello query",router.query.number)
-    getZonesStatus(router.query.number).then((res) => {
-      
+    const number = localStorage.getItem("currentZone");
+    getZonesStatus(number).then((res) => {
       setStatus(res);
     });
   }, []);

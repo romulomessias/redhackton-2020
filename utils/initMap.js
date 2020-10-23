@@ -33,7 +33,7 @@ export const useMap = (coords = uluru, marks = []) => {
     console.log("updateMarks", { places, coords });
 
     places.forEach((element) => {
-      const { zone_name = "", zone_long, zone_lat, zone_numner = 0 } = element;
+      const { zone_name = "", zone_long, zone_lat, zone_number = 0 } = element;
 
       const myLatlng = {
         lat: zone_lat,
@@ -46,7 +46,7 @@ export const useMap = (coords = uluru, marks = []) => {
         content: `<div>
           ${zone_name}
           <br/>
-          <a href="/status?number=${zone_numner}"> Verificar status  </a>
+          <a href="/status/?number=${zone_number}"> Verificar status  </a>
         </div>`,
       });
 
@@ -59,6 +59,7 @@ export const useMap = (coords = uluru, marks = []) => {
 
       marker.addListener("click", () => {
         infowindow.open(map, marker);
+        localStorage.setItem("currentZone", zone_number)
       });
 
       console.log("updateMarks", element, marker);
