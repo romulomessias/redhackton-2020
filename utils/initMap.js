@@ -29,5 +29,3 @@ export const useMap = (coords = uluru) => {
     }
   }, [coords]);
 };
-
-export default initMap;
