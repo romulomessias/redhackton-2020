@@ -7,6 +7,8 @@ import Map from "../components/Map";
 import styled from "styled-components";
 import { getZones } from "../services/zones";
 import Button from "../components/Button";
+import { Fragment, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const Title = styled.h2`
   height: 110px;
@@ -54,6 +56,12 @@ export default function Home() {
     });
   }, []);
 
+  const router = useRouter();
+
+  const handleOnclick = () => {
+    router.push("search-zone");
+  };
+
   return (
     <Fragment>
       <Head>
@@ -61,11 +69,11 @@ export default function Home() {
       </Head>
       <Container>
         <CurrentLocationName coords={coords} />
-        <Title>Zonas Eleitorais perdo de você</Title>
+        <Title>Zonas Eleitorais perto de você</Title>
         <Map coords={coords} places={zones} />
 
         <ButtonArea>
-          <ZoneButton>Não voto nessa região</ZoneButton>
+          <ZoneButton onClick={handleOnclick}>Não voto nessa região</ZoneButton>
         </ButtonArea>
       </Container>
     </Fragment>
