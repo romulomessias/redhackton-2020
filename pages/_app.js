@@ -21,7 +21,7 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="description" content="Description" />
         <meta name="keywords" content="Keywords" />
         <title>Next.js PWA Example</title>
-
+        <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
         <link
           href="/favicon-16x16.png"
@@ -37,6 +37,10 @@ export default function MyApp({ Component, pageProps }) {
         />
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGfHLZvMJ1hhXkMokajj22p_CP_M3MRFw"
+          type="text/javascript"
+        ></script>
       </Head>
       <GlobalStyle />
       <ThemeProvider theme={theme}>

@@ -19,8 +19,6 @@ export default function Home() {
           type="text/javascript"
         ></script>
       </Head>
-      {status}
-      {JSON.stringify(coords)}
       <main>
         <div id="map"></div>
       </main>
