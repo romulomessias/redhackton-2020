@@ -174,20 +174,20 @@ export default function Home() {
 
   useEffect(() => {
     const number = localStorage.getItem("currentZone");
-    getZonesStatus(number).then((res) => {
-      setStatus({
-        zone_id: 905,
-        zone_name: "EMEI. DONA LEONOR MENDES DE BARROS",
-        zone_number: 12,
-        zone_address: "RUA RUI FERREIRA DA ROCHA, 161",
-        zone_city: "PARAGUA�U PAULISTA",
-        zone_lat: -22.4135,
-        zone_long: -50.5705,
-        zone_status: 0,
-        created_at: "2020-10-23T21:55:54.000Z",
-        updated_at: null,
-      });
-    });
+    // getZonesStatus(number).then((res) => {
+    //   setStatus({
+    //     zone_id: 905,
+    //     zone_name: "EMEI. DONA LEONOR MENDES DE BARROS",
+    //     zone_number: 12,
+    //     zone_address: "RUA RUI FERREIRA DA ROCHA, 161",
+    //     zone_city: "PARAGUA�U PAULISTA",
+    //     zone_lat: -22.4135,
+    //     zone_long: -50.5705,
+    //     zone_status: 0,
+    //     created_at: "2020-10-23T21:55:54.000Z",
+    //     updated_at: null,
+    //   });
+    // });
 
     setStatus({
       zone_id: 905,

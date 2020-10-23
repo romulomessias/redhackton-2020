@@ -39,7 +39,7 @@ const CurrentLocationName = ({ coords }) => {
     <Container>
       <Room />
       <Text>
-        {city} / {state}
+        São Paulo / São Paulo
       </Text>
     </Container>
   );
