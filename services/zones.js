@@ -12,7 +12,7 @@ export const getZones = async () => {
   return [
     {
       zone_id: 1,
-      zone_name: "Colégio Cidade 1",
+      zone_name: "Escola Bacelona",
       zone_number: 76,
       zone_address: null,
       zone_city: "João Pessoa",
