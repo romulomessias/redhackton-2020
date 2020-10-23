@@ -9,6 +9,7 @@ import Input from '../components/Input'
 import Button from '../components/Button'
 
 const Main = styled.main`
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
