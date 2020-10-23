@@ -1,16 +1,16 @@
 import data from "./data.json";
 export const getZones = async () => {
   console.log("getZones", data);
-  return data.data.slice(0, 100);
-  // return fetch("http://ec2-18-234-191-73.compute-1.amazonaws.com/zone")
-  //   .then((res) => {
-  //     return res.json()
-  //   })
-  //   .then((res) => {
-  //     const { data = [] } = res;
-  //     console.log("getZones", res);
-  //     return data;
-  //   });
+  // return data.data.slice(0, 100);
+  return fetch("http://ec2-18-234-191-73.compute-1.amazonaws.com/zone")
+    .then((res) => {
+      return res.json()
+    })
+    .then((res) => {
+      const { data = [] } = res;
+      console.log("getZones", res);
+      return data;
+    });
 
   // return [
   //   {
