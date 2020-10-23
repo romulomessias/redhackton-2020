@@ -32,6 +32,7 @@ const ZoneName = styled.div`
   letter-spacing: 0;
   line-height: 28px;
   text-align: center;
+  margin 0 auto;
 `;
 
 const ZoneStatusGroup = styled.div`
@@ -149,11 +150,11 @@ const feedbackText = {
 };
 
 export default function Home() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleBackButton = () => {
-    router.push("/")
-  }
+    router.push("/");
+  };
 
   return (
     <Fragment>
