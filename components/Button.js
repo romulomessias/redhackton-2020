@@ -6,8 +6,6 @@ const StyledButton = styled.button`
   font-size: 1.2rem;
 `;
 
-export default function Button({ children }) {
-  return (
-    <StyledButton>{children}</StyledButton>
-  )
+export default function Button({ children, ...props }) {
+  return <StyledButton {...props}>{children}</StyledButton>;
 }
