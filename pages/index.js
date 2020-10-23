@@ -1,3 +1,4 @@
+import { useStore } from "../stores/store";
 import {
   Card,
   Container,
@@ -9,11 +10,12 @@ import {
 } from "../styles/pages/Index.styled";
 
 export default function Home() {
+  const store = useStore();
   return (
     <Container>
       <Main>
         <Title>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://nextjs.org">Next.js!</a> {store}
         </Title>
 
         <Description>

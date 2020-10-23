@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 import { ThemeProvider } from "styled-components";
+import { StoreProvider } from "../stores/store";
 import { GlobalStyle } from "../styles/globals";
 import { theme } from "../styles/theme";
 
@@ -36,7 +37,9 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <StoreProvider>
+          <Component {...pageProps} />
+        </StoreProvider>
       </ThemeProvider>
     </>
   );
