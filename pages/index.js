@@ -1,12 +1,22 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
+import initMap from '../utils/initMap'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  useEffect(() => {
+    initMap()
+  }, [])
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGfHLZvMJ1hhXkMokajj22p_CP_M3MRFw"
+          type="text/javascript">
+        </script>
       </Head>
 
       <main className={styles.main}>
@@ -49,6 +59,8 @@ export default function Home() {
           </a>
         </div>
       </main>
+
+      <div id="map"></div>
 
       <footer className={styles.footer}>
         <a
