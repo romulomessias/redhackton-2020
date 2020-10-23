@@ -1,5 +1,8 @@
-import Head from 'next/head'
-import '../styles/globals.css'
+import Head from "next/head";
+
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "../styles/globals";
+import { theme } from "../styles/theme";
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -31,7 +34,10 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
-      <Component {...pageProps} />
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
-  )
+  );
 }
