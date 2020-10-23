@@ -272,7 +272,7 @@ export default function Home() {
         </ActionButtonLabel>
         <ZoneAction>
           <ActionButton onClick={handlefeedback}>Sim</ActionButton>
-          <ActionButton>Não</ActionButton>
+          <ActionButton onClick={handlefeedback}>Não</ActionButton>
         </ZoneAction>
       </StatusContainer>
     </Fragment>
