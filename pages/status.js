@@ -207,6 +207,21 @@ export default function Home() {
     router.push("/");
   };
 
+  const handleUpdateButton = () => {
+    setStatus({
+      zone_id: 905,
+      zone_name: "EMEI. DONA LEONOR MENDES DE BARROS",
+      zone_number: 12,
+      zone_address: "RUA RUI FERREIRA DA ROCHA, 161",
+      zone_city: "PARAGUA�U PAULISTA",
+      zone_lat: -22.4135,
+      zone_long: -50.5705,
+      zone_status: 2,
+      created_at: "2020-10-23T21:55:54.000Z",
+      updated_at: null,
+    });
+  }
+
   return (
     <Fragment>
       <Head>
