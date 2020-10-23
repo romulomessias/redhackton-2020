@@ -63,9 +63,11 @@ export default function SearchZone() {
       if (res && res.status === 'none') {
         router.push('/status')
       } else {
-        router.push('/situacao')
+        
       }
     });
+
+    router.push('/status')
   };
 
   return (
