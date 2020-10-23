@@ -149,6 +149,12 @@ const feedbackText = {
 };
 
 export default function Home() {
+  const router = useRouter()
+
+  const handleBackButton = () => {
+    router.push("/")
+  }
+
   return (
     <Fragment>
       <Head>
@@ -156,7 +162,7 @@ export default function Home() {
       </Head>
       <StatusContainer>
         <Toolbal>
-          <ButtonIcon>
+          <ButtonIcon onClick={handleBackButton}>
             <Arrow />
           </ButtonIcon>
 
