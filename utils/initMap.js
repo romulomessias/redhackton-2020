@@ -7,7 +7,7 @@ const initMap = () => {
   };
 
   const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 17,
+    zoom: 12,
     center: uluru,
   });
 
@@ -33,33 +33,36 @@ export const useMap = (coords = uluru, marks = []) => {
     console.log("updateMarks", { places, coords });
 
     places.forEach((element) => {
-      const { zone_name = "", zone_long, zone_lat } = element;
+      const { zone_name = "", zone_long, zone_lat, zone_number = 0 } = element;
 
       const myLatlng = {
-        lat: zone_lat ,
-        lng: zone_long ,
+        lat: zone_lat,
+        lng: zone_long,
       };
 
       console.log(zone_name, myLatlng);
 
-      const content = zone_name
-
       const infowindow = new google.maps.InfoWindow({
-        content,
+        content: `<div>
+          ${zone_name}
+          <br/>
+          <a href="/status/?number=${zone_number}"> Verificar status  </a>
+        </div>`,
       });
 
       // if (zone_lat && zone_long) {
-        const marker = new google.maps.Marker({
-          map,
-          position: myLatlng,
-          title: zone_name,
-        });
+      const marker = new google.maps.Marker({
+        map,
+        position: myLatlng,
+        title: zone_name,
+      });
 
-        marker.addListener("click", () => {
-          infowindow.open(map, marker);
-        });
+      marker.addListener("click", () => {
+        infowindow.open(map, marker);
+        localStorage.setItem("currentZone", zone_number)
+      });
 
-        console.log("updateMarks", element, marker);
+      console.log("updateMarks", element, marker);
       // }
     });
   }
