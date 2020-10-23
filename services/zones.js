@@ -66,11 +66,7 @@ export const getZonesStatus = async (number) => {
     "http://ec2-18-234-191-73.compute-1.amazonaws.com/zone/status?number=" +
       number
   ).then((res) => {
-    const {
-      data = {},
-    } = res.json();
-
-    return data;
+    return res.json()
   });
 };
 

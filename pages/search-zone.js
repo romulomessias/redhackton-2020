@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Container } from "../styles/pages/Index.styled";
 import { useDispatch } from "../stores/store";
+import { useRouter } from 'next/router'
+import { getZones, getZonesStatus } from "../services/zones";
 
 // components
 import Title from "../components/Title";
@@ -42,6 +44,7 @@ const StyledCenterArea = styled.div`
 `
 
 export default function SearchZone() {
+  const router = useRouter()
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
 
@@ -49,11 +52,20 @@ export default function SearchZone() {
     localStorage.removeItem('zone')
   }, [])
 
-  const searchZone = () => {
+  const onSearchZone = () => {
     if (value) {
       localStorage.setItem('zone', value)
       dispatch({ type: 'SET_ZONE', zone: value })
     }
+
+    getZonesStatus(value).then((res) => {
+      console.log("ress", res)
+      if (res && res.status === 'none') {
+        router.push('/status')
+      } else {
+        router.push('/situacao')
+      }
+    });
   };
 
   return (
@@ -63,7 +75,7 @@ export default function SearchZone() {
           <Title>Onde é sua zona eleitoral?</Title>
           <Input label="Nº da Zona" onChange={setValue} value={value} />
         </StyledCenterArea>
-        <StyledButton onClick={searchZone}>Buscar Zona Eleitoral</StyledButton>
+        <StyledButton onClick={onSearchZone}>Buscar Zona Eleitoral</StyledButton>
       </Main>
     </Container>
   );
