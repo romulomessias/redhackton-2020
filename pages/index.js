@@ -1,7 +1,6 @@
-import { Fragment, useEffect, useState } from "react";
 import Head from "next/head";
-import initMap, { useMap } from "../utils/initMap";
-import { Container } from "../styles/pages/zones.styled";
+import { useMap } from "../utils/initMap";
+import { Container } from "../styles/pages/Index.styled";
 import { useLocation } from "../hooks/useLocation";
 import CurrentLocationName from "../components/CurrentLocationName";
 import Map from "../components/Map";
