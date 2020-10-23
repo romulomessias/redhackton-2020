@@ -14,7 +14,7 @@ import Schedule from "../public/icons/schedule.svg";
 import { route } from "next/dist/next-server/server/router";
 
 const Title = styled.h2`
-  height: 56px;
+  // height: 56px;
   margin: 0;
   margin-bottom: 16px;
   font-family: Avenir;
