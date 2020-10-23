@@ -13,7 +13,6 @@ const Map = ({ coords, places = [1], ...props }) => {
   const { updateMarks } = useMap(coords);
 
   useEffect(() => {
-    console.log("hello");
     updateMarks(places);
   }, [places]);
 

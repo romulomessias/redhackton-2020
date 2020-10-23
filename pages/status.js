@@ -150,14 +150,56 @@ const feedbackText = {
   bad: "Aglomeração intensa. Você pode votar nas próximas 5 horas.",
 };
 
+const feedbackLabel = {
+  ok: "Pouca aglomeração",
+  good: "Aglomeração média",
+  bad: "Aglomeração intensa",
+};
+
+const feedbackLabelTime = {
+  ok: "Tempo de espera curto",
+  good: "Tempo de espera médio",
+  bad: "Tempo de espera Alto",
+};
+
+const feedbackIndex = ["good", "ok", "bad"];
+
 export default function Home() {
   const router = useRouter();
-  const [status, setStatus] = useState();
+  const [zoneStatus, setStatus] = useState({});
+
+  const { zone_status = 2, zone_name = "", zone_number = 0 } = zoneStatus;
+
+  const status = feedbackIndex[zone_status];
 
   useEffect(() => {
     const number = localStorage.getItem("currentZone");
     getZonesStatus(number).then((res) => {
-      setStatus(res);
+      setStatus({
+        zone_id: 905,
+        zone_name: "EMEI. DONA LEONOR MENDES DE BARROS",
+        zone_number: 12,
+        zone_address: "RUA RUI FERREIRA DA ROCHA, 161",
+        zone_city: "PARAGUA�U PAULISTA",
+        zone_lat: -22.4135,
+        zone_long: -50.5705,
+        zone_status: 0,
+        created_at: "2020-10-23T21:55:54.000Z",
+        updated_at: null,
+      });
+    });
+
+    setStatus({
+      zone_id: 905,
+      zone_name: "EMEI. DONA LEONOR MENDES DE BARROS",
+      zone_number: 12,
+      zone_address: "RUA RUI FERREIRA DA ROCHA, 161",
+      zone_city: "PARAGUA�U PAULISTA",
+      zone_lat: -22.4135,
+      zone_long: -50.5705,
+      zone_status: 0,
+      created_at: "2020-10-23T21:55:54.000Z",
+      updated_at: null,
     });
   }, []);
 
@@ -183,22 +225,26 @@ export default function Home() {
         </Toolbal>
 
         <Title>Situação da sua zona</Title>
-        <ZoneName>Zona 374 - Escola Bacelona</ZoneName>
+        <ZoneName>
+          Zona {zone_number} - {zone_name}
+        </ZoneName>
 
         <ZoneStatusGroup>
           <div>
-            <ZoneActionIconGroup status="ok">
+            <ZoneActionIconGroup status={status}>
               <Person />
-              <ZoneActionIconText>Pouca aglomeração</ZoneActionIconText>
+              <ZoneActionIconText>{feedbackLabel[status]}</ZoneActionIconText>
             </ZoneActionIconGroup>
-            <ZoneActionIconGroup status="ok">
+            <ZoneActionIconGroup status={status}>
               <Schedule />
-              <ZoneActionIconText>Pouca aglomeração</ZoneActionIconText>
+              <ZoneActionIconText>
+                {feedbackLabelTime[status]}
+              </ZoneActionIconText>
             </ZoneActionIconGroup>
           </div>
         </ZoneStatusGroup>
 
-        <ZoneActionStatusLabel status="ok">
+        <ZoneActionStatusLabel status={status}>
           {feedbackText["ok"]}
         </ZoneActionStatusLabel>
 

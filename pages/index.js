@@ -12,9 +12,9 @@ import { useRouter } from "next/router";
 
 const Title = styled.h2`
   height: 110px;
-  margin: 0;
+  margin: 0 auto;
   margin-bottom: 16px;
-  width: 378.89px;
+  width: 80vw;
   font-family: Avenir;
   font-size: 40px;
   font-weight: 900;
@@ -52,6 +52,7 @@ export default function Home() {
 
   useEffect(() => {
     getZones().then((res) => {
+      console.log("update", res)
       setZones(res);
     });
   }, []);
