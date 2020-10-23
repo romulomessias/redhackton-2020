@@ -2,31 +2,34 @@ import { useEffect, useState } from "react";
 
 export const useLocation = () => {
   const [coords, setCoords] = useState({
-    latitude: 0,
-    longitude: 0,
+    lat: 0,
+    lng: 0,
   });
 
   const [status, setStatus] = useState("idle");
 
-  const handleSuccess = (position) => {
+  function handleSuccess(position) {
     const { latitude, longitude } = position.coords;
+    console.log({ position });
+
     setCoords({
-      latitude,
-      longitude,
+      lat: latitude,
+      lng: longitude,
     });
 
     setStatus("allowed");
-  };
+  }
 
-  const handleError = (error) => {
+  function handleError(error) {
     console.error(error);
     if (error.code === 1) {
       setStatus("denied");
     }
-  };
+  }
 
   useEffect(() => {
     if ("geolocation" in navigator) {
+      console.log("hello");
       navigator.geolocation.getCurrentPosition(handleSuccess, handleError, {
         enableHighAccuracy: true,
       });

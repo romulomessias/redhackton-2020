@@ -1,15 +1,13 @@
 import { useEffect } from "react";
 import Head from "next/head";
-import initMap from "../utils/initMap";
+import initMap, { useMap } from "../utils/initMap";
 import { Container } from "../styles/pages/Index.styled";
 import { useLocation } from "../hooks/useLocation";
 
 export default function Home() {
-  const { coords } = useLocation();
+  const { coords, status } = useLocation();
 
-  useEffect(() => {
-    initMap();
-  }, []);
+  useMap(coords);
 
   return (
     <Container>
@@ -21,7 +19,7 @@ export default function Home() {
           type="text/javascript"
         ></script>
       </Head>
-
+      {status}
       {JSON.stringify(coords)}
       <main>
         <div id="map"></div>
