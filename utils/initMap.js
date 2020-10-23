@@ -36,30 +36,34 @@ export const useMap = (coords = uluru, marks = []) => {
       const { zone_name = "", zone_long, zone_lat } = element;
 
       const myLatlng = {
-        lat: zone_lat ,
-        lng: zone_long ,
+        lat: zone_lat,
+        lng: zone_long,
       };
 
       console.log(zone_name, myLatlng);
 
-      const content = zone_name
+      const content = zone_name;
 
       const infowindow = new google.maps.InfoWindow({
-        content,
+        content: `<div>
+          ${zone_name}
+          <br/>
+          <a href="/status?numbe={12}?"> Verificar status  </a>
+        </div>`,
       });
 
       // if (zone_lat && zone_long) {
-        const marker = new google.maps.Marker({
-          map,
-          position: myLatlng,
-          title: zone_name,
-        });
+      const marker = new google.maps.Marker({
+        map,
+        position: myLatlng,
+        title: zone_name,
+      });
 
-        marker.addListener("click", () => {
-          infowindow.open(map, marker);
-        });
+      marker.addListener("click", () => {
+        infowindow.open(map, marker);
+      });
 
-        console.log("updateMarks", element, marker);
+      console.log("updateMarks", element, marker);
       // }
     });
   }
