@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { Container } from "../styles/pages/Index.styled";
+import { useDispatch } from '../stores/store'
 
 // components
 import Title from '../components/Title'
@@ -21,17 +22,20 @@ const StyledButton = styled(Button)`
 
 export default function SearchZone() {
   const [value, setValue] = useState('')
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    console.log("input value", value)
-  }, [value])
+  const searchZone = () => {
+    if (value) {
+      dispatch({ type: 'SET_ZONE', zone: value })
+    }
+  }
 
   return (
     <Container>
       <Main>
         <Title>Onde é sua zona eleitoral?</Title>
-        <Input label="Nº da Zona" onChange={setValue} />
-        <StyledButton>Buscar Zona Eleitoral</StyledButton>
+        <Input label="Nº da Zona" onChange={setValue} value={value} />
+        <StyledButton onClick={searchZone}>Buscar Zona Eleitoral</StyledButton>
       </Main>
     </Container>
   );

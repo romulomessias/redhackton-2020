@@ -29,13 +29,14 @@ const InputLabel = styled.span`
   font-size: .8rem;
   color: gray;
   margin-bottom: 5px;
+  display: block;
 `
 
-export default function Input({ label, onChange }) {
+export default function Input({ label, onChange, value }) {
   return (
     <InputWrapper>
       {label && <InputLabel>{label}</InputLabel>}
-      <StyledInput onChange={onChange} type="text" placeholder="ex: 374" />
+      <StyledInput onChange={e => onChange(e.target.value)} value={value} type="text" placeholder="ex: 374" />
       <SearchIcon src="/search.svg" />
     </InputWrapper>
   )

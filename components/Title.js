@@ -6,8 +6,8 @@ const StyledTitle = styled.h1`
   margin-bottom: 4rem;
 `;
 
-export default function Title({ children }) {
+export default function Title({ className, children }) {
   return (
-    <StyledTitle>{children}</StyledTitle>
+    <StyledTitle className={className}>{children}</StyledTitle>
   )
 }

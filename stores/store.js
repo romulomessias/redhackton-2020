@@ -5,8 +5,11 @@ const DispatchContext = createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "INCREASE":
-      return state + 1;
+    case "SET_ZONE":
+      return {
+        ...state,
+        zone: action.zone
+      };
     case "DECREASE":
       return state - 1;
     case "INCREASE_BY":
@@ -17,7 +20,7 @@ const reducer = (state, action) => {
 };
 
 export const StoreProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, 0);
+  const [state, dispatch] = useReducer(reducer, {});
   return (
     <DispatchContext.Provider value={dispatch}>
       <StoreContext.Provider value={state}>{children}</StoreContext.Provider>
