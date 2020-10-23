@@ -4,13 +4,14 @@ import { useRouter } from "next/router";
 import { Container } from "../styles/pages/zones.styled";
 import { useLocation } from "../hooks/useLocation";
 import styled from "styled-components";
-import { getZones } from "../services/zones";
+import { getZones, getZonesStatus } from "../services/zones";
 import Button from "../components/Button";
 
 import Arrow from "../public/icons/arrow_back.svg";
 import Refresh from "../public/icons/refresh.svg";
 import Person from "../public/icons/person.svg";
 import Schedule from "../public/icons/schedule.svg";
+import { route } from "next/dist/next-server/server/router";
 
 const Title = styled.h2`
   height: 56px;
@@ -151,6 +152,15 @@ const feedbackText = {
 
 export default function Home() {
   const router = useRouter();
+  const [status, setStatus] = useState();
+
+  useEffect(() => {
+    console.log("hello query",router.query.number)
+    getZonesStatus(router.query.number).then((res) => {
+      
+      setStatus(res);
+    });
+  }, []);
 
   const handleBackButton = () => {
     router.push("/");

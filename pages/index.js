@@ -69,7 +69,7 @@ export default function Home() {
       </Head>
       <Container>
         <CurrentLocationName coords={coords} />
-        <Title>Zonas Eleitorais perdo de você</Title>
+        <Title>Zonas Eleitorais perto de você</Title>
         <Map coords={coords} places={zones} />
 
         <ButtonArea>

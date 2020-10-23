@@ -33,7 +33,7 @@ export const useMap = (coords = uluru, marks = []) => {
     console.log("updateMarks", { places, coords });
 
     places.forEach((element) => {
-      const { zone_name = "", zone_long, zone_lat } = element;
+      const { zone_name = "", zone_long, zone_lat, zone_numner = 0 } = element;
 
       const myLatlng = {
         lat: zone_lat,
@@ -42,13 +42,11 @@ export const useMap = (coords = uluru, marks = []) => {
 
       console.log(zone_name, myLatlng);
 
-      const content = zone_name;
-
       const infowindow = new google.maps.InfoWindow({
         content: `<div>
           ${zone_name}
           <br/>
-          <a href="/status?numbe={12}?"> Verificar status  </a>
+          <a href="/status?number=${zone_numner}"> Verificar status  </a>
         </div>`,
       });
 

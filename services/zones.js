@@ -1,7 +1,13 @@
 export const getZones = async () => {
-  // return fetch(
-  //   "http://ec2-18-234-191-73.compute-1.amazonaws.com/zone"
-  // ).then((res) => res.json());
+  // return fetch("http://ec2-18-234-191-73.compute-1.amazonaws.com/zone").then(
+  //   (res) => {
+  //     const {
+  //       data = [],
+  //     } = res.json();
+
+  //     return data;
+  //   }
+  // );
 
   return [
     {
@@ -59,7 +65,13 @@ export const getZonesStatus = async (number) => {
   return fetch(
     "http://ec2-18-234-191-73.compute-1.amazonaws.com/zone/status?number=" +
       number
-  ).then((res) => res.json());
+  ).then((res) => {
+    const {
+      data = {},
+    } = res.json();
+
+    return data;
+  });
 };
 
 /**
